@@ -1,6 +1,6 @@
-# 📄 Punishment — Documentação Legal
+# Documentação Legal
 
-Este repositório contém os **documentos legais oficiais** do bot **Punishment**, um bot de moderação para Discord desenvolvido por **Edimar (FuncZero)**.
+Este repositório contém os **documentos legais oficiais** do bot **Punishment**, um bot de moderação para Discord desenvolvido por **FuncZero (Edimar Ferreira)**.
 
 Os documentos aqui disponibilizados são públicos e aplicáveis a **qualquer usuário** que utilize qualquer funcionalidade do Punishment.
 
@@ -40,7 +40,7 @@ Recomenda-se que os usuários revisem periodicamente esta documentação.
 
 ---
 
-## 📬 Contato
+## Contato
 
 Para dúvidas, solicitações ou questões legais:
 
