@@ -1,56 +1,55 @@
 # Documentação Legal
 
-Este repositório contém os **documentos legais oficiais** do bot **Punishment**, um bot de moderação para Discord desenvolvido por **FuncZero (Edimar Ferreira)**.
+Este repositório contém a **documentação legal oficial** do **Punishment**, um bot de moderação para Discord.
 
-Os documentos aqui disponibilizados são públicos e aplicáveis a **qualquer usuário** que utilize qualquer funcionalidade do Punishment.
-
----
-
-## Acesso Público
-
-Os documentos estão disponíveis via GitHub Pages:
-
-- Página inicial  
-  https://funczero.github.io/punishment-legal/
-
-- Termos de Uso  
-  https://funczero.github.io/punishment-legal/terms
-
-- Política de Privacidade  
-  https://funczero.github.io/punishment-legal/privacy
+Os documentos aqui disponibilizados estabelecem regras, direitos, deveres e políticas aplicáveis a **qualquer usuário** que utilize, direta ou indiretamente, qualquer funcionalidade do Punishment.
 
 ---
 
-## Sobre os Documentos
+## Escopo
 
-- Os **Termos de Uso** definem regras, responsabilidades e condições de uso do Punishment.
-- A **Política de Privacidade** descreve como os dados são coletados, utilizados e protegidos.
-- O uso do bot implica na **aceitação automática** destes documentos.
+Esta documentação tem como objetivo:
+
+- Definir as condições de uso do serviço;
+- Estabelecer limites de responsabilidade;
+- Descrever práticas relacionadas à privacidade e proteção de dados;
+- Garantir transparência, previsibilidade e segurança jurídica.
+
+---
+
+## Documentos
+
+Entre os documentos mantidos neste repositório, incluem-se:
+
+- **Termos de Uso**  
+  Regulam o acesso, a utilização e as responsabilidades relacionadas ao uso do Punishment.
+
+- **Política de Privacidade**  
+  Detalha quais informações técnicas podem ser coletadas, como são utilizadas e quais medidas de proteção são adotadas.
+
+A utilização contínua do Punishment implica na **aceitação integral e automática** da versão mais recente destes documentos.
 
 ---
 
 ## Atualizações
 
-Os documentos podem ser alterados a qualquer momento para:
-- Correções;
-- Ajustes legais;
-- Novas funcionalidades do bot.
+Os documentos podem ser alterados a qualquer momento, incluindo, mas não se limitando a:
 
-Recomenda-se que os usuários revisem periodicamente esta documentação.
+- Ajustes legais ou regulatórios;
+- Correções de conteúdo;
+- Atualizações decorrentes da evolução do serviço;
+- Melhorias de clareza e organização.
 
----
-
-## Contato
-
-Para dúvidas, solicitações ou questões legais:
-
-📧 **contato@funczero.xyz**
+Recomenda-se a revisão periódica desta documentação.
 
 ---
 
-## © Licença
+## Observações
 
-Este repositório contém apenas **documentação legal**.  
-O código-fonte do bot Punishment **não está incluso** neste repositório.
+- Este repositório contém **exclusivamente documentação legal**.
+- Nenhum código-fonte do Punishment está incluído.
+- O conteúdo aqui disponibilizado é válido enquanto estiver publicado e atualizado.
 
-© 2026 — Punishment • FuncZero
+---
+
+© 2026 — Punishment
