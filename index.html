@@ -24,28 +24,19 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
-
     body {
       background: radial-gradient(circle at top, #1a1d2b, var(--bg));
       color: var(--text);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      min-height: 100vh;
     }
 
     .container {
       max-width: 720px;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
     }
 
     .card {
@@ -56,10 +47,6 @@
       border: 1px solid rgba(255,255,255,.04);
       text-align: center;
       transition: transform .2s ease;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .card:hover {
@@ -137,7 +124,7 @@
     }
 
     footer {
-      margin-top: auto;
+      margin-top: 32px;
       font-size: 0.85rem;
       color: var(--muted);
     }
@@ -175,8 +162,7 @@
       </div>
 
       <footer>
-        © 2026 — Punishment • FuncZero. Todos os direitos reservados.<br>
-        <a href="https://funczero.xyz" target="_blank">funczero.xyz</a>
+        © 2026 — Punishment • Criado por <a href="https://funczero.xyz" target="_blank">FuncZero</a>. Todos os direitos reservados.
       </footer>
 
     </div>
