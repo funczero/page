@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentação Legal</title>
+  <title>Punishment - Legal</title>
 
   <style>
     :root {
@@ -42,10 +42,15 @@
     .card {
       background: var(--card);
       border-radius: 16px;
-      padding: 32px;
+      padding: 40px 32px;
       box-shadow: 0 20px 40px rgba(0,0,0,.35);
       border: 1px solid rgba(255,255,255,.04);
       text-align: center;
+      transition: transform .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
     }
 
     .logo {
@@ -57,14 +62,15 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 12px;
     }
 
     .subtitle {
       color: var(--muted);
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       line-height: 1.6;
+      font-size: 1rem;
     }
 
     .status {
@@ -87,7 +93,7 @@
     }
 
     #bot-text {
-      font-size: 0.8rem; /* texto menor, igual ao tamanho do ponto */
+      font-size: 0.8rem;
       vertical-align: middle;
     }
 
@@ -98,40 +104,28 @@
     }
 
     .links {
-      display: grid;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       margin: 32px 0;
+      font-size: 1.05rem;
     }
 
-    .link-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 12px;
-      padding: 20px;
+    .link {
+      color: var(--primary);
       text-decoration: none;
-      color: var(--text);
-      transition: transform .2s ease, background .2s ease;
-      text-align: left;
+      font-weight: 600;
+      transition: color .2s ease;
     }
 
-    .link-card:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,.06);
-    }
-
-    .link-title {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .link-desc {
-      color: var(--muted);
-      font-size: .95rem;
+    .link:hover {
+      color: #4752c4;
+      text-decoration: underline;
     }
 
     footer {
       margin-top: 32px;
-      font-size: .85rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
 
@@ -163,26 +157,9 @@
       </p>
 
       <div class="links">
-        <a href="./terms" class="link-card">
-          <div class="link-title">Termos de Uso</div>
-          <div class="link-desc">
-            Regras, responsabilidades e condições para uso do Punishment.
-          </div>
-        </a>
-
-        <a href="./privacy" class="link-card">
-          <div class="link-title">Política de Privacidade</div>
-          <div class="link-desc">
-            Informações sobre coleta, uso e proteção de dados.
-          </div>
-        </a>
+        <a href="./terms" class="link">Termos de Uso</a>
+        <a href="./privacy" class="link">Política de Privacidade</a>
       </div>
-
-      <footer>
-        Última atualização: <strong>12/01/2026</strong><br />
-        Contato: <a href="mailto:contato@funczero.xyz">contato@funczero.xyz</a><br /><br />
-        © 2026 — Punishment • FuncZero
-      </footer>
 
     </div>
   </div>
