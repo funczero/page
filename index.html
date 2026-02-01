@@ -7,10 +7,9 @@
 
   <style>
     :root {
-      /* Cores extraídas do estilo FuncZero */
       --bg-dark: #0a0a0c;
       --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
-      --primary-purple: #9370DB; /* Roxo vibrante do print */
+      --primary-red: #fe3838;
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
       --online: #43b581;
@@ -35,9 +34,8 @@
       background-color: var(--bg-dark);
       background-image: 
         var(--bg-gradient),
-        /* Padrão de grid (cruzes) similar ao do site original */
         radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 100% 100%, 30px 30px;
+      background-size: 100% 100%, 40px 40px;
       color: var(--text-main);
       display: flex;
       align-items: center;
@@ -52,7 +50,6 @@
     }
 
     .card {
-      /* Estilo minimalista sem bordas pesadas */
       background: transparent;
       padding: 40px 32px;
       text-align: center;
@@ -65,15 +62,14 @@
       object-fit: contain;
       margin-bottom: 24px;
       border-radius: 22px;
-      /* Glow suave opcional para destacar a logo */
-      box-shadow: 0 0 30px rgba(147, 112, 219, 0.2);
+      box-shadow: none; 
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
       margin-bottom: 16px;
-      color: var(--primary-purple);
+      color: var(--primary-red);
       letter-spacing: -1.5px;
     }
 
@@ -124,32 +120,30 @@
       color: var(--text-main);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: all .3s ease;
       opacity: 0.8;
     }
 
     .link:hover {
-      color: var(--primary-purple);
+      color: var(--primary-red);
       opacity: 1;
       transform: translateY(-2px);
     }
 
     footer {
-      margin-top: 60px;
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
       font-size: 0.8rem;
-      color: #444; /* Mais discreto como no rodapé do print */
+      color: #333;
       letter-spacing: 0.5px;
     }
 
     footer a {
       color: inherit;
       text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover {
-      color: var(--text-muted);
     }
 
     /* Mobile Responsiveness */
@@ -183,13 +177,12 @@
         <a href="./terms" class="link">Termos de Uso</a>
         <a href="./privacy" class="link">Política de Privacidade</a>
       </div>
-
-      <footer>
-        © 2026 — Punishment • Criado por <a href="https://funczero.xyz" target="_blank">FuncZero</a>. Todos os direitos reservados.
-      </footer>
-
     </div>
   </div>
+
+  <footer>
+    © 2026 Punishment. Todos os direitos reservados.
+  </footer>
 
   <script>
     async function loadStatus() {
