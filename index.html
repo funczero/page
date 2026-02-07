@@ -46,20 +46,15 @@
       width: 100%;
       max-width: 720px;
       padding: 24px;
-      z-index: 1;
     }
 
     .card {
-      background: transparent;
       padding: 40px 32px;
       text-align: center;
-      width: 100%;
     }
 
     .logo {
       width: 100px;
-      height: 100px;
-      object-fit: contain;
       margin-bottom: 24px;
       border-radius: 22px;
     }
@@ -69,48 +64,32 @@
       font-weight: 800;
       margin-bottom: 16px;
       color: var(--primary-red);
-      letter-spacing: -1.5px;
     }
 
     .subtitle {
       color: var(--text-muted);
       margin-bottom: 32px;
       line-height: 1.6;
-      font-size: 1.1rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .btn-add {
       display: inline-block;
       background-color: var(--primary-red);
       color: white;
-      text-decoration: none;
       padding: 12px 28px;
       border-radius: 8px;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
       margin-bottom: 32px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(254, 56, 56, 0.15);
-    }
-
-    .btn-add:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(254, 56, 56, 0.25);
     }
 
     .status {
-      font-weight: 500;
-      margin-bottom: 32px;
       display: flex;
-      align-items: center;
       justify-content: center;
       gap: 8px;
-      font-size: 8px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-bottom: 32px;
     }
 
     .status-dot {
@@ -121,48 +100,25 @@
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.5; }
-      100% { transform: scale(1); opacity: 1; }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); opacity: .5; }
+      100% { transform: scale(1); }
     }
 
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin: 32px 0;
-    }
-
-    .link {
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 500;
-      opacity: 0.8;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 30px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #333;
-    }
-
-    /* ===== Discord-like example ===== */
+    /* ===== Discord Example ===== */
 
     .example-section {
-      margin-top: 48px;
-      background: rgba(17, 17, 22, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 40px;
+      background: #111114;
       border-radius: 14px;
       padding: 20px;
       text-align: left;
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
     .example-header {
-      color: var(--text-muted);
       font-size: 0.85rem;
+      color: var(--text-muted);
       margin-bottom: 14px;
     }
 
@@ -180,9 +136,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
       font-size: 0.75rem;
-      color: white;
+      font-weight: bold;
     }
 
     .avatar.bot {
@@ -207,22 +162,63 @@
       margin-left: 6px;
     }
 
-    .message-text {
-      font-size: 0.9rem;
-    }
-
     .embed {
       margin-top: 6px;
-      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      background: #1e1f22;
       border-left: 4px solid var(--primary-red);
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 6px;
-      font-size: 0.85rem;
+      border-radius: 8px;
     }
 
-    .embed strong {
+    .embed-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .embed-field {
+      margin-top: 10px;
+    }
+
+    .embed-field strong {
       display: block;
-      margin-bottom: 4px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .embed-footer {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .embed-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #2f3136;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .links {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333;
     }
   </style>
 </head>
@@ -231,31 +227,31 @@
   <div class="container">
     <div class="card">
 
-      <img src="./logo.png" alt="Punishment Logo" class="logo" />
-
+      <img src="./logo.png" class="logo" />
       <h1>Punishment</h1>
+
       <p class="subtitle">
         Moderação avançada para manter seu servidor seguro e organizado.
       </p>
 
-      <a href="https://discord.com/oauth2/authorize?client_id=1155843839932764253&permissions=8&integration_type=0&scope=applications.commands+bot" class="btn-add">
+      <a class="btn-add" href="#">
         Me Adicione
       </a>
 
-      <p class="status">
-        <span class="status-dot" style="background-color: var(--unknown)"></span>
-        <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
-      </p>
+      <div class="status">
+        <span class="status-dot" style="background: var(--online)"></span>
+        Online
+      </div>
 
-      <!-- ===== Example Section ===== -->
+      <!-- EXEMPLO DISCORD -->
       <div class="example-section">
-        <div class="example-header"># moderation</div>
+        <div class="example-header"># administração</div>
 
         <div class="chat-message">
           <div class="avatar">FZ</div>
           <div>
             <div class="username">funczero</div>
-            <div class="message-text">.ban @User Spamming links</div>
+            <div>.mute @Daiane 1d An idiot</div>
           </div>
         </div>
 
@@ -263,20 +259,38 @@
           <div class="avatar bot">P</div>
           <div>
             <div class="username bot">
-              Punishment <span class="bot-badge">BOT</span>
+              Punishment <span class="bot-badge">APP</span>
             </div>
+
             <div class="embed">
-              <strong>🚫 User banned successfully</strong>
-              Reason: Spamming links<br>
-              Duration: Permanent
+              <div>
+                <div class="embed-title">🔇 Punição aplicada</div>
+                <div><strong>@Daiane</strong> foi silenciado(a).</div>
+
+                <div class="embed-field">
+                  <strong>Duração</strong>
+                  1d
+                </div>
+
+                <div class="embed-field">
+                  <strong>Motivo</strong>
+                  An idiot
+                </div>
+
+                <div class="embed-footer">
+                  funczero.xyz • Hoje às 21:49
+                </div>
+              </div>
+
+              <div class="embed-avatar">P</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="links">
-        <a href="./terms" class="link">Termos de Uso</a>
-        <a href="./privacy" class="link">Política de Privacidade</a>
+        <a href="./terms">Termos de Uso</a>
+        <a href="./privacy">Política de Privacidade</a>
       </div>
 
     </div>
@@ -285,34 +299,5 @@
   <footer>
     © 2026 Punishment. Todos os direitos reservados.
   </footer>
-
-  <script>
-    async function loadStatus() {
-      const dot = document.querySelector('.status-dot');
-      const text = document.getElementById('bot-text');
-
-      try {
-        const res = await fetch('https://punishment.squareweb.app/bot/status');
-        const data = await res.json();
-
-        if (data.online) {
-          dot.style.backgroundColor = 'var(--online)';
-          text.textContent = 'Online';
-          text.style.color = 'var(--online)';
-        } else {
-          dot.style.backgroundColor = 'var(--offline)';
-          text.textContent = 'Offline';
-          text.style.color = 'var(--offline)';
-        }
-      } catch {
-        dot.style.backgroundColor = 'var(--unknown)';
-        text.textContent = 'Indisponível';
-        text.style.color = 'var(--unknown)';
-      }
-    }
-
-    loadStatus();
-    setInterval(loadStatus, 10000);
-  </script>
 </body>
 </html>
