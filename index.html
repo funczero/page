@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punishment - Legal</title>
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
+      --primary-red: #fe3838;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --online: #43b581;
+      --offline: #f04747;
+      --unknown: #faa61a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        var(--bg-gradient),
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      padding: 24px;
+      z-index: 1;
+    }
+
+    .card {
+      background: transparent;
+      padding: 40px 32px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      border-radius: 22px;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--primary-red);
+      letter-spacing: -1.5px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-add {
+      display: inline-block;
+      background-color: var(--primary-red);
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(254, 56, 56, 0.15);
+    }
+
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(254, 56, 56, 0.25);
+    }
+
+    .status {
+      font-weight: 500;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .link {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333;
+    }
+
+    /* ===== Discord-like example ===== */
+
+    .example-section {
+      margin-top: 48px;
+      background: rgba(17, 17, 22, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .example-header {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
+
+    .chat-message {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #2f3136;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: white;
+    }
+
+    .avatar.bot {
+      background: var(--primary-red);
+    }
+
+    .username {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .username.bot {
+      color: var(--primary-red);
+    }
+
+    .bot-badge {
+      background: var(--primary-red);
+      color: white;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    .message-text {
+      font-size: 0.9rem;
+    }
+
+    .embed {
+      margin-top: 6px;
+      padding: 10px 12px;
+      border-left: 4px solid var(--primary-red);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .embed strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+
+      <img src="./logo.png" alt="Punishment Logo" class="logo" />
+
+      <h1>Punishment</h1>
+      <p class="subtitle">
+        Moderação avançada para manter seu servidor seguro e organizado.
+      </p>
+
+      <a href="https://discord.com/oauth2/authorize?client_id=1155843839932764253&permissions=8&integration_type=0&scope=applications.commands+bot" class="btn-add">
+        Me Adicione
+      </a>
+
+      <p class="status">
+        <span class="status-dot" style="background-color: var(--unknown)"></span>
+        <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
+      </p>
+
+      <!-- ===== Example Section ===== -->
+      <div class="example-section">
+        <div class="example-header"># moderation</div>
+
+        <div class="chat-message">
+          <div class="avatar">FZ</div>
+          <div>
+            <div class="username">funczero</div>
+            <div class="message-text">.ban @User Spamming links</div>
+          </div>
+        </div>
+
+        <div class="chat-message">
+          <div class="avatar bot">P</div>
+          <div>
+            <div class="username bot">
+              Punishment <span class="bot-badge">BOT</span>
+            </div>
+            <div class="embed">
+              <strong>🚫 User banned successfully</strong>
+              Reason: Spamming links<br>
+              Duration: Permanent
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="./terms" class="link">Termos de Uso</a>
+        <a href="./privacy" class="link">Política de Privacidade</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Punishment. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    async function loadStatus() {
+      const dot = document.querySelector('.status-dot');
+      const text = document.getElementById('bot-text');
+
+      try {
+        const res = await fetch('https://punishment.squareweb.app/bot/status');
+        const data = await res.json();
+
+        if (data.online) {
+          dot.style.backgroundColor = 'var(--online)';
+          text.textContent = 'Online';
+          text.style.color = 'var(--online)';
+        } else {
+          dot.style.backgroundColor = 'var(--offline)';
+          text.textContent = 'Offline';
+          text.style.color = 'var(--offline)';
+        }
+      } catch {
+        dot.style.backgroundColor = 'var(--unknown)';
+        text.textContent = 'Indisponível';
+        text.style.color = 'var(--unknown)';
+      }
+    }
+
+    loadStatus();
+    setInterval(loadStatus, 10000);
+  </script>
+</body>
+</html>
