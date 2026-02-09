@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punishment</title>
+
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --panel: rgba(255, 255, 255, 0.02);
+      --border: rgba(255, 255, 255, 0.06);
+      --red: #ff3b3b;
+      --red-soft: rgba(255, 59, 59, 0.15);
+      --text: #ffffff;
+      --muted: #a1a1aa;
+
+      --online: #43b581;
+      --offline: #f04747;
+      --unknown: #faa61a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: radial-gradient(circle at top, #13131a, var(--bg));
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* subtle animated grid */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      padding: 24px;
+      z-index: 1;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 36px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      animation: fadeUp 0.8s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.02);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      letter-spacing: -1.2px;
+      background: linear-gradient(90deg, #fff, var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 6s ease infinite;
+    }
+
+    @keyframes glowText {
+      0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+      50% { filter: drop-shadow(0 0 12px rgba(255,59,59,0.35)); }
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .btn-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 34px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ff5a5a, var(--red));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow:
+        0 8px 30px var(--red-soft),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+      transition: all .3s ease;
+      margin-bottom: 30px;
+    }
+
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 14px 40px rgba(255,59,59,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 currentColor; }
+      70% { box-shadow: 0 0 0 10px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color .25s ease;
+    }
+
+    .link:hover {
+      color: var(--text);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 28px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #3f3f46;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.2rem; }
+      .card { padding: 36px 24px; }
+      .links { flex-direction: column; gap: 14px; }
+      .btn-add { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="./logo.png" alt="Punishment Logo" class="logo" />
+
+      <h1>Punishment</h1>
+
+      <p class="subtitle">
+        Moderação avançada, proteção inteligente e controle total para servidores que levam segurança a sério.
+      </p>
+
+      <a
+        href="https://discord.com/oauth2/authorize?client_id=1155843839932764253&permissions=8&integration_type=0&scope=applications.commands+bot"
+        class="btn-add"
+      >
+        Me Adicionar ao Discord
+      </a>
+
+      <div class="status">
+        <span class="status-dot" style="color: var(--unknown); background: var(--unknown)"></span>
+        <span id="bot-text" style="color: var(--muted)">Verificando status</span>
+      </div>
+
+      <div class="links">
+        <a href="./terms" class="link">Termos de Uso</a>
+        <a href="./privacy" class="link">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Punishment. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    async function loadStatus() {
+      const dot = document.querySelector('.status-dot');
+      const text = document.getElementById('bot-text');
+
+      try {
+        const res = await fetch('https://punishment.squareweb.app/bot/status');
+        const data = await res.json();
+
+        if (data.online) {
+          dot.style.background = 'var(--online)';
+          dot.style.color = 'var(--online)';
+          text.textContent = 'Online';
+          text.style.color = 'var(--online)';
+        } else {
+          dot.style.background = 'var(--offline)';
+          dot.style.color = 'var(--offline)';
+          text.textContent = 'Offline';
+          text.style.color = 'var(--offline)';
+        }
+      } catch {
+        dot.style.background = 'var(--unknown)';
+        dot.style.color = 'var(--unknown)';
+        text.textContent = 'Indisponível';
+        text.style.color = 'var(--unknown)';
+      }
+    }
+
+    loadStatus();
+    setInterval(loadStatus, 10000);
+  </script>
+</body>
+</html>
