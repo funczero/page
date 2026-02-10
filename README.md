@@ -1,27 +1,28 @@
-# Documentação Legal do Punishment
+O **Punishment** é um bot de moderação para Discord, criado para ajudar comunidades a manter organização, segurança e controle.
 
-Este repositório reúne a **documentação legal oficial** do **Punishment**, bot de moderação para Discord.  
-
-Aqui você encontra as regras e políticas que valem para qualquer pessoa que use o Punishment.
+Esta página reúne as principais informações oficiais do Punishment.
 
 ---
 
-## Documentos
+## Conteúdo
 
-- **Termos de Uso**  
-  Regras sobre como usar o Punishment e responsabilidades dos usuários.
+- Adicionar o Punishment à sua comunidade  
+- Verificar o status do bot  
+- Consultar os Termos de Uso  
+- Consultar a Política de Privacidade  
 
-- **Política de Privacidade**  
-  Como informações são coletadas, usadas e protegidas.
+---
 
-Usar o Punishment significa aceitar esses documentos na versão mais recente.
+## Informações legais
+
+Ao utilizar o Punishment, você concorda com os Termos de Uso e a Política de Privacidade, sempre em suas versões mais recentes.
 
 ---
 
 ## Atualizações
 
-Podemos atualizar estes documentos a qualquer momento. É bom conferir de vez em quando para se manter informado.
+Os documentos e informações podem ser atualizados a qualquer momento.
 
 ---
 
-© 2026 — Punishment • FuncZero
+© 2026 Punishment. Todos os direitos reservados.
