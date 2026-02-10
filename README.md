@@ -13,6 +13,5 @@ Esta página reúne as principais informações oficiais do **Punishment**, incl
 
 Os documentos, links e informações apresentados nesta página podem ser atualizados a qualquer momento, sempre refletindo a versão mais recente do Punishment.
 
----
 
 © 2026 Punishment. Todos os direitos reservados.
