@@ -1,27 +1,17 @@
-O **Punishment** é um bot de moderação para Discord, criado para ajudar comunidades a manter organização, segurança e controle.
+# Punishment
 
-Esta página reúne as principais informações oficiais do Punishment.
+Esta página reúne as principais informações oficiais do **Punishment**, incluindo links importantes, documentos legais e status do serviço.
 
----
+## Informações principais
 
-## Conteúdo
-
-- Adicionar o Punishment à sua comunidade  
-- Verificar o status do bot  
-- Consultar os Termos de Uso  
-- Consultar a Política de Privacidade  
-
----
-
-## Informações legais
-
-Ao utilizar o Punishment, você concorda com os Termos de Uso e a Política de Privacidade, sempre em suas versões mais recentes.
-
----
+- **Adicionar o Punishment**
+- **Verificar o status**
+- **Termos de Uso**  
+- **Política de Privacidade**
 
 ## Atualizações
 
-Os documentos e informações podem ser atualizados a qualquer momento.
+Os documentos, links e informações apresentados nesta página podem ser atualizados a qualquer momento, sempre refletindo a versão mais recente do Punishment.
 
 ---
 
