@@ -239,7 +239,7 @@
       const text = document.getElementById('bot-text');
 
       try {
-        const res = await fetch('https://punishment.squareweb.app/bot/status');
+        const res = await fetch('https://punishment.squareweb.app/public/status');
         const data = await res.json();
 
         if (data.online) {
