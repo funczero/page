@@ -170,7 +170,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      min-width: 140px;
       transition: transform 0.2s ease, background-color 0.2s ease;
     }
 
@@ -314,26 +313,31 @@
           guilds = [...guilds, ...guilds, ...guilds];
         }
 
-        const createCard = (guild) => {
-          const icon = guild.icon
-            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64`
-            : './logo.png';
+        // Remove guilds que não existem mais
+        Array.from(track.children).forEach(child => {
+          const name = child.querySelector('span').textContent;
+          if (!guilds.some(g => g.name === name)) {
+            child.remove();
+          }
+        });
 
-          return `
-            <div class="guild-card">
-              <img src="${icon}" alt="${guild.name}">
-              <span>${guild.name}</span>
-            </div>
-          `;
-        };
+        // Adiciona guilds novas
+        const existingGuilds = Array.from(track.children).map(c => c.querySelector('span').textContent);
+        guilds.forEach(g => {
+          if (!existingGuilds.includes(g.name)) {
+            const icon = g.icon
+              ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png?size=64`
+              : './logo.png';
 
-        const cardsHTML = guilds.map(createCard).join('');
-
-        track.innerHTML = '';
-        track.innerHTML = cardsHTML + cardsHTML;
+            const div = document.createElement('div');
+            div.className = 'guild-card';
+            div.innerHTML = `<img src="${icon}" alt="${g.name}"><span>${g.name}</span>`;
+            track.appendChild(div);
+          }
+        });
 
       } catch (err) {
-        console.error('Erro ao carregar guilds');
+        console.error('Erro ao carregar guilds', err);
       } finally {
         guildsLoading = false;
       }
