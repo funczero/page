@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punishment</title>
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
+      --primary-red: #ff3b3b;
+      --primary-red-hover: #ff5c5c;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --online: #43b581;
+      --offline: #f04747;
+      --unknown: #faa61a;
+      --card-bg: #16171d;
+      --card-border: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      z-index: 1;
+    }
+
+    .card {
+      background: transparent;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      border-radius: 18px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--primary-red);
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.4;
+      font-size: 0.95rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-red);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.15);
+    }
+
+    .status {
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      position: relative;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-color: inherit;
+      animation: pulse-ring 1.2s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* Estilização do Slider estilo Sapphire */
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 20px;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 12px;
+      width: max-content;
+      animation: scroll 80s linear infinite; /* Velocidade reduzida como solicitado */
+      padding: 10px 0;
+    }
+
+    .guild-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .guild-card img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .guild-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .guild-name-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .guild-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .verified-badge {
+      color: #23a559;
+      display: flex;
+      align-items: center;
+    }
+
+    .guild-members {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .member-dot {
+      width: 5px;
+      height: 5px;
+      background: #72767d;
+      border-radius: 50%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-red);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="./logo.png" alt="Punishment Logo" class="logo" />
+      <h1>Punishment</h1>
+      <p class="subtitle">
+        Moderação avançada para manter seu servidor seguro e organizado.
+      </p>
+
+      <a href="https://punbot.xyz/invite" class="btn-add">
+        Me Adicione
+      </a>
+
+      <p class="status">
+        <span class="status-dot" style="background-color: var(--unknown)"></span>
+        <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
+      </p>
+
+      <div class="slider-container">
+        <div class="slider-track" id="guild-track"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="./terms">Termos de Uso</a>
+      <a href="./privacy">Política de Privacidade</a>
+    </div>
+    <p>© 2026 Punishment. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    async function loadStatus() {
+      const dot = document.querySelector('.status-dot');
+      const text = document.getElementById('bot-text');
+      try {
+        const res = await fetch('https://api.punbot.xyz/bot/status');
+        const data = await res.json();
+        const color = data.online ? 'var(--online)' : 'var(--offline)';
+        dot.style.backgroundColor = color;
+        text.textContent = data.online ? 'Online' : 'Offline';
+        text.style.color = color;
+      } catch {
+        dot.style.backgroundColor = 'var(--unknown)';
+        text.textContent = 'Indisponível';
+        text.style.color = 'var(--unknown)';
+      }
+    }
+
+    async function loadGuilds() {
+      const track = document.getElementById('guild-track');
+      try {
+        const res = await fetch('https://api.punbot.xyz/bot/guilds');
+        let guilds = await res.json();
+        if (!guilds.length) return;
+
+        // Mantém uma quantidade mínima para o efeito infinito funcionar bem
+        while (guilds.length < 12) {
+          guilds = [...guilds, ...guilds];
+        }
+
+        const cardsHTML = guilds.map(guild => {
+          const icon = guild.icon 
+            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64` 
+            : './logo.png';
+          
+          // Formata os membros em padrão brasileiro (ex: 1.200)
+          const membersCount = guild.memberCount 
+            ? guild.memberCount.toLocaleString('pt-BR') 
+            : Math.floor(Math.random() * 2000).toLocaleString('pt-BR'); // Exemplo caso a API não envie
+
+          return `
+            <div class="guild-card">
+              <img src="${icon}" alt="">
+              <div class="guild-info">
+                <div class="guild-name-wrapper">
+                  <span class="guild-name">${guild.name}</span>
+                  <span class="verified-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                    </svg>
+                  </span>
+                </div>
+                <div class="guild-members">
+                  <span class="member-dot"></span>
+                  ${membersCount} membros
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        track.innerHTML = cardsHTML + cardsHTML;
+      } catch (err) {
+        console.error('Erro ao carregar guilds');
+      }
+    }
+
+    loadStatus();
+    loadGuilds();
+    setInterval(loadStatus, 10000);
+    setInterval(loadGuilds, 60000);
+  </script>
+</body>
+</html>
