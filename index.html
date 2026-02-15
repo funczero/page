@@ -28,9 +28,9 @@
     }
 
     html, body {
-      height: 100%;
       width: 100%;
-      overflow: hidden;
+      min-height: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -38,15 +38,13 @@
       background-image: var(--bg-gradient);
       color: var(--text-main);
       display: flex;
-      align-items: center;
       justify-content: center;
     }
 
     .container {
       width: 100%;
-      max-width: 750px;
-      padding: 30px 20px;
-      z-index: 1;
+      max-width: 900px;
+      padding: 40px 20px 120px;
     }
 
     .card {
@@ -59,7 +57,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .brand {
@@ -69,8 +67,8 @@
     }
 
     .logo {
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
       object-fit: contain;
       border-radius: 16px;
     }
@@ -88,28 +86,28 @@
       justify-content: center;
       background: var(--primary-red);
       color: white;
-      padding: 8px 20px;
+      padding: 9px 22px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       transition: all 0.25s ease;
       box-shadow: 0 4px 12px rgba(255, 59, 59, 0.15);
     }
 
     .btn-add:hover {
       background: var(--primary-red-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     /* DESCRIPTION */
 
     .subtitle {
       color: var(--text-muted);
-      margin-bottom: 32px;
-      line-height: 1.5;
-      font-size: 0.95rem;
-      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+      font-size: 1rem;
+      max-width: 520px;
     }
 
     /* STATUS */
@@ -119,10 +117,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .status-dot {
@@ -142,9 +140,9 @@
     }
 
     .stats-msg {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 28px;
+      margin-bottom: 40px;
       font-weight: 500;
       line-height: 1.6;
     }
@@ -164,33 +162,32 @@
     .slider-container {
       width: 100%;
       overflow: hidden;
-      margin-top: 10px;
       mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
 
     .slider-track {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       width: max-content;
       animation: scroll 80s linear infinite;
-      padding: 12px 0;
+      padding: 14px 0;
     }
 
     .guild-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 12px 16px;
+      border-radius: 16px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       gap: 14px;
-      min-width: 230px;
+      min-width: 250px;
     }
 
     .guild-card img {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
       object-fit: cover;
     }
@@ -198,7 +195,7 @@
     .guild-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
     }
 
     .guild-name-wrapper {
@@ -208,7 +205,7 @@
     }
 
     .guild-name {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #fff;
       white-space: nowrap;
@@ -221,7 +218,7 @@
     }
 
     .guild-members {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       display: flex;
       align-items: center;
@@ -247,7 +244,7 @@
       bottom: 20px;
       width: 100%;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: #555;
     }
 
@@ -271,6 +268,7 @@
 </head>
 
 <body>
+
   <div class="container">
     <div class="card">
 
@@ -331,7 +329,8 @@
         if (Array.isArray(data.guilds) && typeof data.users === 'number') {
           const totalGuilds = data.guilds.length.toLocaleString('pt-BR');
           const totalUsers = data.users.toLocaleString('pt-BR');
-          stats.innerHTML = `O Punishment está presente em mais de <span>${totalGuilds}</span> servidores, alcançando mais de <span>${totalUsers}</span> de usuários.`;
+          stats.innerHTML = 
+            `O Punishment está presente em mais de <span>${totalGuilds}</span> servidores, alcançando mais de <span>${totalUsers}</span> de usuários.`;
         } else {
           stats.textContent = 'Carregando informações...';
         }
@@ -357,9 +356,9 @@
 
         const cardsHTML = guilds.map(guild => {
           const icon = guild.icon 
-            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64` 
+            ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64`
             : './logo.png';
-          
+
           const membersCount = (guild.members || 0).toLocaleString('pt-BR');
 
           return `
@@ -384,6 +383,7 @@
         }).join('');
 
         track.innerHTML = cardsHTML + cardsHTML;
+
       } catch (err) {
         console.error('Erro ao carregar guilds');
       }
