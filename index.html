@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punishment</title>
+
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
+      --primary-red: #ff3b3b;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --online: #43b581;
+      --offline: #f04747;
+      --unknown: #faa61a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        var(--bg-gradient),
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      padding: 24px;
+      z-index: 1;
+    }
+
+    .card {
+      background: transparent;
+      padding: 40px 32px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      border-radius: 22px;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--primary-red);
+      letter-spacing: -1.5px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-add {
+      display: inline-block;
+      background-color: var(--primary-red);
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(254, 56, 56, 0.15);
+    }
+
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(254, 56, 56, 0.25);
+    }
+
+    .status {
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      position: relative;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-color: inherit;
+      animation: pulse-ring 1.2s ease-out infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* ===== Guild Carousel ===== */
+
+    .guild-carousel {
+      margin-top: 20px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .guild-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: fadeGuild 0.5s ease;
+    }
+
+    .guild-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .guild-card span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 200px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @keyframes fadeGuild {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 32px 0;
+    }
+
+    .link {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      opacity: 0.8;
+      transition: all .3s ease;
+    }
+
+    .link:hover {
+      color: var(--primary-red);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #333;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1rem; }
+      .links { flex-direction: column; gap: 15px; }
+      .btn-add { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="./logo.png" alt="Punishment Logo" class="logo" />
+
+      <h1>Punishment</h1>
+      <p class="subtitle">
+        Moderação avançada para manter seu servidor seguro e organizado.
+      </p>
+
+      <a href="https://punbot.xyz/invite" class="btn-add">
+        Me Adicione
+      </a>
+
+      <p class="status">
+        <span id="bot-status" style="display: flex; align-items: center; gap: 8px;">
+          <span class="status-dot" style="background-color: var(--unknown)"></span>
+          <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
+        </span>
+      </p>
+
+      <!-- Guild Carousel -->
+      <div class="guild-carousel">
+        <div id="guild-display"></div>
+      </div>
+
+      <div class="links">
+        <a href="./terms" class="link">Termos de Uso</a>
+        <a href="./privacy" class="link">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Punishment. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    async function loadStatus() {
+      const dot = document.querySelector('.status-dot');
+      const text = document.getElementById('bot-text');
+
+      try {
+        const res = await fetch('https://api.punbot.xyz/bot/status');
+        const data = await res.json();
+
+        if (data.online) {
+          dot.style.backgroundColor = 'var(--online)';
+          text.textContent = 'Online';
+          text.style.color = 'var(--online)';
+        } else {
+          dot.style.backgroundColor = 'var(--offline)';
+          text.textContent = 'Offline';
+          text.style.color = 'var(--offline)';
+        }
+      } catch {
+        dot.style.backgroundColor = 'var(--unknown)';
+        text.textContent = 'Indisponível';
+        text.style.color = 'var(--unknown)';
+      }
+    }
+
+    async function loadGuilds() {
+      try {
+        const res = await fetch('https://api.punbot.xyz/bot/guilds');
+        const guilds = await res.json();
+        if (!guilds.length) return;
+
+        let index = 0;
+        const container = document.getElementById('guild-display');
+
+        function showGuild() {
+          const guild = guilds[index];
+
+          container.innerHTML = `
+            <div class="guild-card">
+              <img src="${guild.icon || './logo.png'}" alt="${guild.name}">
+              <span>${guild.name}</span>
+            </div>
+          `;
+
+          index = (index + 1) % guilds.length;
+        }
+
+        showGuild();
+        setInterval(showGuild, 3000);
+
+      } catch (err) {
+        console.error('Erro ao carregar guilds');
+      }
+    }
+
+    loadStatus();
+    loadGuilds();
+    setInterval(loadStatus, 10000);
+  </script>
+</body>
+</html>
