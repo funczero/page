@@ -131,7 +131,6 @@
       100% { transform: scale(2.5); opacity: 0; }
     }
 
-    /* Estilização do Slider estilo Sapphire */
     .slider-container {
       width: 100%;
       overflow: hidden;
@@ -144,7 +143,7 @@
       display: flex;
       gap: 12px;
       width: max-content;
-      animation: scroll 80s linear infinite; /* Velocidade reduzida como solicitado */
+      animation: scroll 80s linear infinite;
       padding: 10px 0;
     }
 
@@ -156,7 +155,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 200px;
+      min-width: 220px;
       text-align: left;
     }
 
@@ -297,7 +296,6 @@
         let guilds = await res.json();
         if (!guilds.length) return;
 
-        // Mantém uma quantidade mínima para o efeito infinito funcionar bem
         while (guilds.length < 12) {
           guilds = [...guilds, ...guilds];
         }
@@ -307,10 +305,7 @@
             ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64` 
             : './logo.png';
           
-          // Formata os membros em padrão brasileiro (ex: 1.200)
-          const membersCount = guild.memberCount 
-            ? guild.memberCount.toLocaleString('pt-BR') 
-            : Math.floor(Math.random() * 2000).toLocaleString('pt-BR'); // Exemplo caso a API não envie
+          const membersCount = (guild.memberCount || 0).toLocaleString('pt-BR');
 
           return `
             <div class="guild-card">
@@ -342,7 +337,7 @@
     loadStatus();
     loadGuilds();
     setInterval(loadStatus, 10000);
-    setInterval(loadGuilds, 60000);
+    setInterval(loadGuilds, 300000);
   </script>
 </body>
 </html>
