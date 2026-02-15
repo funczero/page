@@ -305,7 +305,7 @@
             ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=64` 
             : './logo.png';
           
-          const membersCount = (guild.memberCount || 0).toLocaleString('pt-BR');
+          const membersCount = (guild.members || 0).toLocaleString('pt-BR');
 
           return `
             <div class="guild-card">
