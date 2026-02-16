@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Punishment</title>
+
   <style>
     :root {
       --bg-dark: #0a0a0c;
       --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
       --primary-red: #ff3b3b;
+      --primary-red-hover: #ff5c5c;
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
       --online: #43b581;
@@ -31,10 +33,7 @@
 
     body {
       background-color: var(--bg-dark);
-      background-image:
-        var(--bg-gradient),
-        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 100% 100%, 40px 40px;
+      background-image: var(--bg-gradient);
       color: var(--text-main);
       display: flex;
       align-items: center;
@@ -43,73 +42,66 @@
 
     .container {
       width: 100%;
-      max-width: 720px;
-      padding: 24px;
+      max-width: 600px;
+      padding: 20px;
       z-index: 1;
     }
 
     .card {
       background: transparent;
-      padding: 40px 32px;
+      padding: 20px;
       text-align: center;
       width: 100%;
     }
 
     .logo {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
-      margin-bottom: 24px;
-      border-radius: 22px;
-      box-shadow: none;
+      margin-bottom: 16px;
+      border-radius: 18px;
     }
 
     h1 {
-      font-size: 2.6rem;
+      font-size: 2rem;
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       color: var(--primary-red);
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
     }
 
     .subtitle {
       color: var(--text-muted);
-      margin-bottom: 32px;
-      line-height: 1.6;
-      font-size: 1.1rem;
-      max-width: 500px;
+      margin-bottom: 24px;
+      line-height: 1.4;
+      font-size: 0.95rem;
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .btn-add {
-      display: inline-block;
-      background-color: var(--primary-red);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-red);
       color: white;
-      text-decoration: none;
-      padding: 12px 28px;
+      padding: 8px 20px;
       border-radius: 8px;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 32px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 15px rgba(254, 56, 56, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 59, 59, 0.15);
     }
 
     .btn-add:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(254, 56, 56, 0.25);
-      filter: brightness(1.1);
-    }
-
-    .btn-add:active {
-      transform: translateY(0);
+      background: var(--primary-red-hover);
     }
 
     .status {
-      font-weight: 500;
-      margin-bottom: 40px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -117,13 +109,13 @@
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
     .status-dot {
       position: relative;
-      display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
     }
 
@@ -134,70 +126,41 @@
       border-radius: 50%;
       background-color: inherit;
       animation: pulse-ring 1.2s ease-out infinite;
-      opacity: 0.4;
     }
 
     @keyframes pulse-ring {
       0% { transform: scale(1); opacity: 0.5; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin: 32px 0;
-    }
-
-    .link {
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: all .3s ease;
-      opacity: 0.8;
-    }
-
-    .link:hover {
-      color: var(--primary-red);
-      opacity: 1;
-      transform: translateY(-2px);
+      100% { transform: scale(2.5); opacity: 0; }
     }
 
     footer {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       width: 100%;
       text-align: center;
-      font-size: 0.8rem;
-      color: #333;
-      letter-spacing: 0.5px;
+      font-size: 0.75rem;
+      color: #555;
     }
 
     .footer-links {
-      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
     }
 
     .footer-links a {
-      margin: 0 8px;
-      color: inherit;
+      color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--text-muted);
-      text-decoration: underline;
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 2.5rem; }
-      .subtitle { font-size: 1rem; }
-      .links { flex-direction: column; gap: 15px; }
-      .btn-add { width: 100%; }
+      color: var(--primary-red);
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="card">
@@ -212,16 +175,9 @@
       </a>
 
       <p class="status">
-        <span id="bot-status" style="display: flex; align-items: center; gap: 8px;">
-          <span class="status-dot" style="background-color: var(--unknown)"></span>
-          <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
-        </span>
+        <span class="status-dot" style="background-color: var(--unknown)"></span>
+        <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
       </p>
-
-      <div class="links">
-        <a href="./terms" class="link">Termos de Uso</a>
-        <a href="./privacy" class="link">Política de Privacidade</a>
-      </div>
     </div>
   </div>
 
@@ -242,15 +198,11 @@
         const res = await fetch('https://api.punbot.xyz/bot/status');
         const data = await res.json();
 
-        if (data.online) {
-          dot.style.backgroundColor = 'var(--online)';
-          text.textContent = 'Online';
-          text.style.color = 'var(--online)';
-        } else {
-          dot.style.backgroundColor = 'var(--offline)';
-          text.textContent = 'Offline';
-          text.style.color = 'var(--offline)';
-        }
+        const color = data.online ? 'var(--online)' : 'var(--offline)';
+        dot.style.backgroundColor = color;
+        text.textContent = data.online ? 'Online' : 'Offline';
+        text.style.color = color;
+
       } catch {
         dot.style.backgroundColor = 'var(--unknown)';
         text.textContent = 'Indisponível';
