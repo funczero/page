@@ -98,27 +98,27 @@
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      position: relative;
-    }
+  width: 8px;         
+  height: 8px;        
+  border-radius: 50%;
+  position: relative;
+}
 
-    .status-dot::after {
-      content: "";
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background-color: inherit;
-      opacity: 0.4;
-      animation: pulse-ring 2s infinite;
-    }
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -2px;        
+  border-radius: 50%;
+  background-color: inherit;
+  opacity: 0.4;
+  animation: pulse-ring 2s infinite;
+}
 
-    @keyframes pulse-ring {
-      0% { transform: scale(1); opacity: 0.5; }
-      70% { transform: scale(2.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 0; }
-    }
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  70% { transform: scale(1.8); opacity: 0; }  /* antes era 2.5 */
+  100% { transform: scale(1); opacity: 0; }
+}
 
     .status-operational { color: var(--online); border-color: rgba(67, 181, 129, 0.2); }
     .status-offline { color: var(--offline); border-color: rgba(240, 71, 71, 0.2); }
