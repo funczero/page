@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punishment • Status</title>
+
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --card: #161a23;
+      --border: #1f2430;
+      --text: #e6e9ef;
+      --muted: #9aa4b2;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #facc15;
+      --blue: #3b82f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .status-indicator {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 999px;
+      margin-bottom: 40px;
+      transition: 0.3s ease;
+    }
+
+    .operational {
+      background: rgba(34,197,94,0.15);
+      color: var(--green);
+      box-shadow: 0 0 20px rgba(34,197,94,0.3);
+    }
+
+    .offline {
+      background: rgba(239,68,68,0.15);
+      color: var(--red);
+      box-shadow: 0 0 20px rgba(239,68,68,0.3);
+    }
+
+    .degraded {
+      background: rgba(250,204,21,0.15);
+      color: var(--yellow);
+      box-shadow: 0 0 20px rgba(250,204,21,0.3);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Punishment</h1>
+  <div class="subtitle">System Status</div>
+
+  <div id="status" class="status-indicator operational">
+    Checking...
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h2>Servidores</h2>
+      <p id="guilds">--</p>
+    </div>
+
+    <div class="card">
+      <h2>Usuários</h2>
+      <p id="users">--</p>
+    </div>
+
+    <div class="card">
+      <h2>API Status</h2>
+      <p id="apiStatus">--</p>
+    </div>
+
+    <div class="card">
+      <h2>Última atualização</h2>
+      <p id="updated">--</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 Punishment • All systems monitored
+  </div>
+
+<script>
+async function fetchStatus() {
+  try {
+    const [statusRes, guildsRes, usersRes] = await Promise.all([
+      fetch('/api/bot/status'),
+      fetch('/api/bot/guilds'),
+      fetch('/api/bot/users')
+    ]);
+
+    const statusData = await statusRes.json();
+    const guildsData = await guildsRes.json();
+    const usersData = await usersRes.json();
+
+    const statusEl = document.getElementById('status');
+    const apiStatusEl = document.getElementById('apiStatus');
+
+    // Ajuste conforme seu retorno da API
+    const isOnline = statusData.online === true || statusData.status === "online";
+
+    if (isOnline) {
+      statusEl.textContent = "🟢 Operational";
+      statusEl.className = "status-indicator operational";
+      apiStatusEl.textContent = "Online";
+    } else {
+      statusEl.textContent = "🔴 Offline";
+      statusEl.className = "status-indicator offline";
+      apiStatusEl.textContent = "Offline";
+    }
+
+    document.getElementById('guilds').textContent = guildsData.total || guildsData;
+    document.getElementById('users').textContent = usersData.total || usersData;
+
+    document.getElementById('updated').textContent =
+      new Date().toLocaleTimeString();
+
+  } catch (error) {
+    document.getElementById('status').textContent = "🔴 Error fetching data";
+    document.getElementById('status').className = "status-indicator offline";
+  }
+}
+
+fetchStatus();
+setInterval(fetchStatus, 30000);
+</script>
+
+</body>
+</html>
