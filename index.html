@@ -105,53 +105,34 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
       font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 10px;
     }
 
-    .status a {
-      text-decoration: none;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
-    }
-
-    .status a:hover {
-      opacity: 0.8;
-    }
-
     .status-dot {
-      position: relative;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      will-change: transform;
+      position: relative;
     }
 
     .status-dot::after {
       content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
+      inset: -2px;
       border-radius: 50%;
       background-color: inherit;
-      transform: translate(-50%, -50%) scale(1);
-      animation: pulse-ring 1.2s ease-out infinite;
+      opacity: 0.4;
+      animation: pulse-ring 2s infinite;
     }
 
     @keyframes pulse-ring {
-      0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(2.5);
-        opacity: 0;
-      }
+      0% { transform: scale(1); opacity: 0.5; }
+      70% { transform: scale(1.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
     }
 
     footer {
@@ -197,7 +178,7 @@
 
       <p class="status">
         <span class="status-dot" style="background-color: var(--unknown)"></span>
-        <a href="../status">
+        <a href="./status" style="text-decoration: none;">
           <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
         </a>
       </p>
