@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Punishment • Status</title>
+
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
+    /* =========================================
+       1. VARIABLES (CSS Custom Properties)
+       ========================================= */
     :root {
       /* Cores idênticas à página principal */
       --bg-dark: #0a0a0c;
@@ -15,6 +19,8 @@
       --primary-red-hover: #ff5c5c;
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
+      
+      /* Cores de Status */
       --online: #43b581;
       --offline: #f04747;
       --unknown: #faa61a;
@@ -25,6 +31,9 @@
       --card-hover: rgba(255, 255, 255, 0.04);
     }
 
+    /* =========================================
+       2. RESET & BASE
+       ========================================= */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +52,9 @@
       padding: 60px 20px 20px 20px;
     }
 
-    /* ===== HEADER ===== */
+    /* =========================================
+       3. HEADER
+       ========================================= */
     .header {
       text-align: center;
       margin-bottom: 40px;
@@ -82,7 +93,9 @@
       margin: 0 auto;
     }
 
-    /* ===== STATUS BADGE ===== */
+    /* =========================================
+       4. STATUS BADGE
+       ========================================= */
     .status-indicator {
       display: flex;
       align-items: center;
@@ -98,33 +111,35 @@
     }
 
     .status-dot {
-  width: 8px;         
-  height: 8px;        
-  border-radius: 50%;
-  position: relative;
-}
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: relative;
+    }
 
-.status-dot::after {
-  content: "";
-  position: absolute;
-  inset: -2px;        
-  border-radius: 50%;
-  background-color: inherit;
-  opacity: 0.4;
-  animation: pulse-ring 2s infinite;
-}
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background-color: inherit;
+      opacity: 0.4;
+      animation: pulse-ring 2s infinite;
+    }
 
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.5; }
-  70% { transform: scale(1.8); opacity: 0; }  /* antes era 2.5 */
-  100% { transform: scale(1); opacity: 0; }
-}
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.5; }
+      70% { transform: scale(2.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
 
     .status-operational { color: var(--online); border-color: rgba(67, 181, 129, 0.2); }
-    .status-offline { color: var(--offline); border-color: rgba(240, 71, 71, 0.2); }
-    .status-unknown { color: var(--unknown); border-color: rgba(250, 166, 26, 0.2); }
+    .status-offline     { color: var(--offline); border-color: rgba(240, 71, 71, 0.2); }
+    .status-unknown     { color: var(--unknown); border-color: rgba(250, 166, 26, 0.2); }
 
-    /* ===== GRID & CARDS ===== */
+    /* =========================================
+       5. GRID & CARDS
+       ========================================= */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -175,7 +190,9 @@
       color: var(--text-main);
     }
 
-    /* ===== FOOTER ===== */
+    /* =========================================
+       6. FOOTER
+       ========================================= */
     .footer {
       margin-top: auto;
       padding-top: 60px;
@@ -202,6 +219,9 @@
       color: var(--primary-red);
     }
 
+    /* =========================================
+       7. MEDIA QUERIES (Responsividade)
+       ========================================= */
     @media (max-width: 600px) {
       h1 { font-size: 2rem; }
       .grid { grid-template-columns: 1fr; }
@@ -265,63 +285,75 @@
     <p>© 2026 Punishment. Todos os direitos reservados.</p>
   </footer>
 
-<script>
-// Inicializa ícones Lucide
-lucide.createIcons();
+  <script>
+    // Inicializa ícones Lucide
+    lucide.createIcons();
 
-async function fetchStatus() {
-  const indicator = document.getElementById('statusIndicator');
-  const statusText = document.getElementById('statusText');
-  const dot = document.getElementById('statusDot');
-  const apiStatusEl = document.getElementById('apiStatus');
+    // Função principal de busca de status
+    async function fetchStatus() {
+      // Elementos do DOM
+      const indicator = document.getElementById('statusIndicator');
+      const statusText = document.getElementById('statusText');
+      const dot = document.getElementById('statusDot');
+      const apiStatusEl = document.getElementById('apiStatus');
 
-  try {
-    const [statusRes, guildsRes, usersRes] = await Promise.all([
-      fetch('https://punbot.xyz/api/bot/status'),
-      fetch('https://punbot.xyz/api/bot/guilds').catch(() => ({ json: () => [] })),
-      fetch('https://punbot.xyz/api/bot/users').catch(() => ({ json: () => ({ total: 0 }) }))
-    ]);
+      try {
+        // Busca os dados das APIs simultaneamente
+        const [statusRes, guildsRes, usersRes] = await Promise.all([
+          fetch('https://punbot.xyz/api/bot/status'),
+          fetch('https://punbot.xyz/api/bot/guilds').catch(() => ({ json: () => [] })),
+          fetch('https://punbot.xyz/api/bot/users').catch(() => ({ json: () => ({ total: 0 }) }))
+        ]);
 
-    const statusData = await statusRes.json();
-    const guildsData = await guildsRes.json();
-    const usersData = await usersRes.json();
+        // Processa as respostas em JSON
+        const statusData = await statusRes.json();
+        const guildsData = await guildsRes.json();
+        const usersData = await usersRes.json();
 
-    const isOnline = statusData.online === true || statusData.status === "online";
+        // Verifica se a API está online
+        const isOnline = statusData.online === true || statusData.status === "online";
 
-    if (isOnline) {
-      indicator.className = "status-indicator status-operational";
-      statusText.textContent = "Sistemas Operacionais";
-      dot.style.backgroundColor = "var(--online)";
-      apiStatusEl.textContent = "Online";
-      apiStatusEl.style.color = "var(--online)";
-    } else {
-      indicator.className = "status-indicator status-offline";
-      statusText.textContent = "Instabilidade Detectada";
-      dot.style.backgroundColor = "var(--offline)";
-      apiStatusEl.textContent = "Offline";
-      apiStatusEl.style.color = "var(--offline)";
+        // Atualiza a interface baseada no status
+        if (isOnline) {
+          indicator.className = "status-indicator status-operational";
+          statusText.textContent = "Sistemas Operacionais";
+          dot.style.backgroundColor = "var(--online)";
+          apiStatusEl.textContent = "Online";
+          apiStatusEl.style.color = "var(--online)";
+        } else {
+          indicator.className = "status-indicator status-offline";
+          statusText.textContent = "Instabilidade Detectada";
+          dot.style.backgroundColor = "var(--offline)";
+          apiStatusEl.textContent = "Offline";
+          apiStatusEl.style.color = "var(--offline)";
+        }
+
+        // Atualiza contadores (Servidores e Usuários)
+        const totalGuilds = Array.isArray(guildsData) ? guildsData.length : (guildsData.count || 0);
+        document.getElementById('guilds').textContent = totalGuilds.toLocaleString('pt-BR');
+
+        const totalUsers = usersData.total || usersData.users || 0;
+        document.getElementById('users').textContent = totalUsers.toLocaleString('pt-BR');
+
+        // Atualiza o horário de verificação
+        const now = new Date();
+        const horas = now.getHours().toString().padStart(2, '0');
+        const minutos = now.getMinutes().toString().padStart(2, '0');
+        document.getElementById('updated').textContent = `Hoje às ${horas}:${minutos}`;
+
+      } catch (error) {
+        // Tratamento de Erros de Conexão
+        statusText.textContent = "Erro na conexão com a API";
+        indicator.className = "status-indicator status-offline";
+        dot.style.backgroundColor = "var(--offline)";
+        apiStatusEl.textContent = "Indisponível";
+        apiStatusEl.style.color = "var(--offline)";
+      }
     }
 
-    const totalGuilds = Array.isArray(guildsData) ? guildsData.length : (guildsData.count || 0);
-    document.getElementById('guilds').textContent = totalGuilds.toLocaleString('pt-BR');
-
-    const totalUsers = usersData.total || usersData.users || 0;
-    document.getElementById('users').textContent = totalUsers.toLocaleString('pt-BR');
-
-    const now = new Date();
-    document.getElementById('updated').textContent = `Hoje às ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-
-  } catch (error) {
-    statusText.textContent = "Erro na conexão com a API";
-    indicator.className = "status-indicator status-offline";
-    dot.style.backgroundColor = "var(--offline)";
-    apiStatusEl.textContent = "Indisponível";
-    apiStatusEl.style.color = "var(--offline)";
-  }
-}
-
-fetchStatus();
-setInterval(fetchStatus, 30000);
-</script>
+    // Execução inicial e intervalo de atualização (a cada 30 segundos)
+    fetchStatus();
+    setInterval(fetchStatus, 30000);
+  </script>
 </body>
 </html>
