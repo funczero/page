@@ -164,25 +164,27 @@
     }
 
     .footer {
-      margin-top: auto;
-      padding-top: 60px;
-      color: #555;
-      font-size: 0.75rem;
-      text-align: center;
       width: 100%;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555;
+      border-top: 1px solid var(--card-border);
+      margin-top: auto;
     }
 
     .footer-links {
+      margin-bottom: 10px;
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 10px;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: 0.2s;
     }
 
     .footer-links a:hover {
@@ -199,7 +201,9 @@
 
   <header class="header">
     <div class="logo-container">
-      <img src="../logo.png" alt="Punishment Logo" class="logo" onerror="this.src='https://ui-avatars.com/api/?name=P&background=ff3b3b&color=fff'" />
+      <img src="../logo.png" alt="Punishment Logo"
+        class="logo"
+        onerror="this.src='https://ui-avatars.com/api/?name=P&background=ff3b3b&color=fff'" />
     </div>
     <h1>Punishment</h1>
   </header>
@@ -245,8 +249,8 @@
 
   <footer class="footer">
     <div class="footer-links">
-      <a href="../terms">Termos de Uso</a>
-      <a href="../privacy">Política de Privacidade</a>
+      <a href="../terms">Termos</a>
+      <a href="../privacy">Privacidade</a>
     </div>
     <p>© 2026 Punishment. Todos os direitos reservados.</p>
   </footer>
@@ -298,7 +302,7 @@
         const minutos = now.getMinutes().toString().padStart(2, '0');
         document.getElementById('updated').textContent = `Hoje às ${horas}:${minutos}`;
 
-      } catch (error) {
+      } catch {
         statusText.textContent = "Erro na conexão com a API";
         indicator.className = "status-indicator status-offline";
         dot.style.backgroundColor = "var(--offline)";
@@ -310,5 +314,6 @@
     fetchStatus();
     setInterval(fetchStatus, 30000);
   </script>
+
 </body>
 </html>
