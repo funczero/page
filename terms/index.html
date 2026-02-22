@@ -11,7 +11,7 @@
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
       --accent-gray: #3f3f46;
-      --footer-color: #555;
+      --footer-color: #333;
       --link-color: #d4d4d8;
     }
 
@@ -33,7 +33,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 24px 0px 24px;
+      padding: 60px 24px;
       line-height: 1.6;
     }
 
@@ -41,7 +41,20 @@
       width: 100%;
       max-width: 720px;
       z-index: 1;
-      flex: 1;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 32px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back:hover {
+      color: var(--text-main);
     }
 
     .card {
@@ -118,47 +131,114 @@
     }
 
     footer {
-      width: 100%;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--footer-color);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
       margin-top: 80px;
+      padding-bottom: 40px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--footer-color);
+      letter-spacing: 0.5px;
+      width: 100%;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
     }
 
     @media (max-width: 480px) {
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.15rem; }
-      body { padding: 40px 20px 0px 20px; }
-      footer { padding: 30px 15px; }
+      body { padding: 40px 20px; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
+
   <div class="card">
     <h1>Termos de Uso</h1>
     <div class="updated">Última atualização: 12/01/2026</div>
-    <p>O <strong>Punishment</strong> é um bot de moderação para Discord, desenvolvido e mantido de forma independente, com o objetivo de auxiliar na organização, segurança e administração de servidores.</p>
-    <p>Ao adicionar, acessar ou utilizar qualquer funcionalidade do Punishment, o usuário declara que <strong>leu, compreendeu e concorda integralmente</strong> com estes Termos.</p>
+
+    <p>
+      O <strong>Punishment</strong> é um bot de moderação para Discord, desenvolvido e mantido de forma independente,
+      com o objetivo de auxiliar na organização, segurança e administração de servidores.
+    </p>
+
+    <p>
+      Ao adicionar, acessar ou utilizar qualquer funcionalidade do Punishment, o usuário declara que
+      <strong>leu, compreendeu e concorda integralmente</strong> com estes Termos.
+    </p>
+
     <h2>1. Elegibilidade e Aceitação</h2>
-    <p>O uso do Punishment é permitido apenas para usuários que estejam em conformidade com os <strong>Termos de Serviço e Diretrizes do Discord</strong>.</p>
+    <p>
+      O uso do Punishment é permitido apenas para usuários que estejam em conformidade com os
+      <strong>Termos de Serviço e Diretrizes do Discord</strong>.
+    </p>
+    <p>
+      Caso o usuário não concorde com qualquer cláusula destes Termos, deverá interromper
+      imediatamente o uso do bot.
+    </p>
+
     <h2>2. Uso Permitido</h2>
+    <p>
+      O Punishment deve ser utilizado exclusivamente para fins legítimos de moderação,
+      organização e segurança de servidores.
+    </p>
     <ul>
       <li>É proibido o uso para atividades ilegais, abusivas ou maliciosas;</li>
+      <li>É vedada qualquer tentativa de explorar falhas, contornar limitações ou interferir no funcionamento do bot;</li>
       <li>O usuário é o único responsável pelas ações executadas por meio do Punishment.</li>
     </ul>
-    <h2>3. Isenção de Responsabilidade</h2>
-    <p>O Punishment é fornecido <strong>“no estado em que se encontra”</strong>, sem garantias de disponibilidade contínua.</p>
-    <h2>4. Contato</h2>
-    <p>📧 <a href="mailto:contato@funczero.xyz">contato@funczero.xyz</a></p>
+
+    <h2>3. Isenção e Limitação de Responsabilidade</h2>
+    <p>
+      O Punishment é fornecido <strong>“no estado em que se encontra”</strong>, sem garantias expressas ou implícitas
+      de desempenho, disponibilidade contínua ou ausência de erros.
+    </p>
+    <p>
+      O desenvolvedor <strong>não se responsabiliza</strong> por:
+    </p>
+    <ul>
+      <li>Danos diretos ou indiretos causados por uso indevido;</li>
+      <li>Banimentos, punições ou perdas decorrentes de decisões administrativas;</li>
+      <li>Falhas, interrupções ou alterações no funcionamento do Discord;</li>
+      <li>Perda de dados, configurações ou registros.</li>
+    </ul>
+
+    <h2>4. Indenização</h2>
+    <p>
+      O usuário concorda em isentar e indenizar o responsável pelo Punishment contra quaisquer
+      reclamações, danos, perdas ou responsabilidades decorrentes do uso do bot.
+    </p>
+
+    <h2>5. Suspensão e Encerramento</h2>
+    <p>
+      O acesso ao Punishment pode ser suspenso ou encerrado a qualquer momento, sem aviso prévio,
+      caso seja identificado uso indevido, violação destes Termos ou risco operacional.
+    </p>
+
+    <h2>6. Alterações dos Termos</h2>
+    <p>
+      Estes Termos podem ser modificados a qualquer momento. O uso contínuo do Punishment
+      após alterações implica aceitação automática da versão vigente.
+    </p>
+
+    <h2>7. Foro e Legislação</h2>
+    <p>
+      Estes Termos são regidos pelas leis aplicáveis, respeitando normas de proteção de dados
+      como a <strong>LGPD (Brasil)</strong> e, quando aplicável, o <strong>GDPR</strong>.
+    </p>
+
+    <h2>8. Contato</h2>
+    <p>
+      📧 <a href="mailto:contato@funczero.xyz">contato@funczero.xyz</a>
+    </p>
   </div>
 </div>
 
 <footer>
-  <p>© 2026 Punishment. Todos os direitos reservados.</p>
+  © 2026 Punishment. Todos os direitos reservados.
 </footer>
 
 </body>
