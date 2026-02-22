@@ -7,262 +7,159 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Cores baseadas em painéis profissionais (estilo Discord/Dyno) */
-      --bg-dark: #09090b; 
-      --primary-red: #ef4444;
-      --primary-red-hover: #dc2626;
+      --bg-dark: #0b0b0f;
+      --primary: #ef4444;
+      --primary-hover: #dc2626;
       --text-main: #ffffff;
-      --text-muted: #a1a1aa;
-      --border-soft: rgba(255, 255, 255, 0.1);
-      
-      /* Cores de Status padrão Discord */
-      --online: #23a559;
-      --offline: #f23f43;
-      --unknown: #f0b232;
+      --text-muted: #9ca3af;
+      --border-soft: rgba(255,255,255,0.06);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
-    a, button {
-      outline: none;
-    }
-
-    /* Focus acessível e minimalista */
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--text-muted);
-      outline-offset: 2px;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-    }
-
     body {
+      background: radial-gradient(circle at top, #14141b 0%, #0b0b0f 60%);
+      color: var(--text-main);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      position: relative;
+      overflow-x: hidden;
     }
 
-    /* --- CONTEÚDO PRINCIPAL --- */
+    .background-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: rgba(239, 68, 68, 0.08);
+      border-radius: 50%;
+      filter: blur(160px);
+      top: -200px;
+      z-index: 0;
+    }
+
     .container {
-      width: 100%;
-      max-width: 650px;
-      padding: 20px;
-      z-index: 1;
       text-align: center;
-      animation: fadeUp 0.6s ease-out forwards;
+      max-width: 720px;
+      padding: 40px 20px;
+      z-index: 1;
+      margin-top: 100px;
+      animation: fadeIn 1s ease-out;
     }
 
-    @keyframes fadeUp {
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Logo limpa, sem efeitos exagerados */
     .logo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-bottom: 24px;
-      border-radius: 20px;
+      width: 65px;
+      height: 65px;
+      border-radius: 18px;
+      margin-bottom: 20px;
     }
 
-    /* Título sólido, grande e imponente */
     h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-      letter-spacing: -0.04em;
-      color: var(--text-main);
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
     }
 
     .subtitle {
       color: var(--text-muted);
-      margin-bottom: 40px;
+      font-size: 0.95rem;
       line-height: 1.6;
-      font-size: 1.125rem;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 400;
+      margin-bottom: 35px;
     }
 
-    /* --- BOTÕES (FLAT DESIGN) --- */
     .btn-group {
       display: flex;
-      gap: 16px;
       justify-content: center;
-      margin-bottom: 32px;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .btn {
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      padding: 14px 24px;
-      border-radius: 8px; /* Cantos menos arredondados, mais profissional */
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-      cursor: pointer;
-      border: none;
-      flex: 1;
+      transition: 0.25s ease;
+      border: 1px solid var(--border-soft);
     }
 
-    .btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Sem sombras, apenas cor sólida */
     .btn-primary {
-      background: var(--primary-red);
-      color: #ffffff;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
     }
 
     .btn-primary:hover {
-      background: var(--primary-red-hover);
+      background: var(--primary-hover);
+      transform: translateY(-2px);
     }
 
-    .btn-primary:active {
-      transform: scale(0.98);
-    }
-
-    /* Botão secundário fantasma (Ghost Button) */
     .btn-secondary {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
     }
 
-    .btn-secondary:active {
-      transform: scale(0.98);
-    }
-
-    /* --- STATUS DO BOT --- */
-    .status-container {
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.85rem;
-    }
-
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: var(--unknown);
-    }
-
-    /* --- TOAST --- */
-    .toast {
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translate(-50%, 100px);
-      background: #18181b; /* Fundo sólido e escuro */
-      border: 1px solid var(--border-soft);
-      color: var(--text-main);
-      padding: 14px 24px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 1000;
-    }
-
-    .toast svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--primary-red);
-    }
-
-    .toast.show {
-      transform: translate(-50%, 0);
-    }
-
-    /* --- FOOTER (Intacto) --- */
     footer {
-      position: absolute;
-      bottom: 20px;
       width: 100%;
+      padding: 30px 20px;
       text-align: center;
       font-size: 0.75rem;
       color: #555;
-      z-index: 1;
+      border-top: 1px solid var(--border-soft);
     }
 
     .footer-links {
+      margin-bottom: 10px;
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 10px;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--primary-red);
-    }
-    
-    /* Responsividade */
-    @media (max-width: 480px) {
-      .btn-group {
-        flex-direction: column;
-      }
-      h1 { font-size: 2.8rem; }
-      .subtitle { font-size: 1rem; padding: 0 10px; }
+      color: var(--primary);
     }
   </style>
 </head>
 
 <body>
 
-  <div id="toast" class="toast">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <line x1="12" y1="8" x2="12" y2="12"></line>
-      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-    </svg>
-    Dashboard em desenvolvimento
-  </div>
+  <div class="background-glow"></div>
 
-  <div class="container">
+  <main class="container">
 
     <img src="./logo.png" alt="Punishment Logo" class="logo"
       onerror="this.src='https://ui-avatars.com/api/?name=P&background=ef4444&color=fff&size=100'" />
@@ -270,83 +167,32 @@
     <h1>Punishment</h1>
 
     <p class="subtitle">
-      Segurança e organização para o seu servidor. Simples, potente e direto ao ponto.
+      Proteção inteligente para servidores Discord.<br>
+      Moderação avançada, estabilidade e controle total.
     </p>
 
     <div class="btn-group">
+
       <a href="https://punbot.xyz/invite" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
-        Me Adicione
+        ➕ Adicionar ao Servidor
       </a>
 
-      <button onclick="showToast()" class="btn btn-secondary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-          <polyline points="10 17 15 12 10 7"></polyline>
-          <line x1="15" y1="12" x2="3" y2="12"></line>
-        </svg>
-        Dashboard
-      </button>
-    </div>
-
-    <div class="status-container">
-      <span class="status-dot"></span>
-      <a href="./status" style="text-decoration: none;">
-        <span id="bot-text" style="color: var(--text-muted); transition: color 0.2s;">Verificando...</span>
+      <a href="./status" class="btn btn-secondary">
+        📊 Status do Sistema
       </a>
+
     </div>
 
-  </div>
+  </main>
 
   <footer>
     <div class="footer-links">
-      <a href="./terms">Termos de Uso</a>
-      <a href="./privacy">Política de Privacidade</a>
+      <a href="./terms">Termos</a>
+      <a href="./privacy">Privacidade</a>
+      <a href="./status">Status</a>
     </div>
-    <p>© 2026 Punishment. Todos os direitos reservados.</p>
+    <p>© 2026 Punishment • Todos os direitos reservados</p>
   </footer>
-
-  <script>
-    async function loadStatus() {
-      const dot = document.querySelector('.status-dot');
-      const text = document.getElementById('bot-text');
-
-      try {
-        const res = await fetch('https://punbot.xyz/api/bot/status');
-        const data = await res.json();
-
-        const color = data.online ? 'var(--online)' : 'var(--offline)';
-        dot.style.backgroundColor = color;
-        text.textContent = data.online ? 'Online' : 'Offline';
-        
-        // Efeito sutil no hover do texto de status dependendo de estar online/offline
-        text.onmouseover = () => text.style.color = color;
-        text.onmouseout = () => text.style.color = 'var(--text-muted)';
-
-      } catch {
-        dot.style.backgroundColor = 'var(--unknown)';
-        text.textContent = 'Indisponível';
-        text.onmouseover = null;
-        text.onmouseout = null;
-      }
-    }
-
-    loadStatus();
-    setInterval(loadStatus, 15000);
-
-    let toastTimeout;
-    function showToast() {
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
-    }
-  </script>
 
 </body>
 </html>
