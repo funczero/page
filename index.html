@@ -28,6 +28,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html, body {
@@ -47,8 +48,28 @@
       position: relative;
     }
 
-    /* Orb */
+    /* Remove outline padrão */
+    a, button {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
+    a:focus,
+    button:focus,
+    a:active,
+    button:active {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Focus elegante para desktop */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--primary-red);
+      outline-offset: 3px;
+    }
+
+    /* Orb */
     .glow-orb {
       position: absolute;
       border-radius: 50%;
@@ -198,8 +219,6 @@
       100% { transform: scale(1); opacity: 0; }
     }
 
-    /* Toast */
-
     .toast {
       position: fixed;
       bottom: 30px;
@@ -282,19 +301,10 @@
 
       <div class="btn-group">
         <a href="https://punbot.xyz/invite" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
           Me Adicione
         </a>
 
         <button onclick="showToast()" class="btn btn-secondary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-            <polyline points="10 17 15 12 10 7"></polyline>
-            <line x1="15" y1="12" x2="3" y2="12"></line>
-          </svg>
           Dashboard
         </button>
       </div>
@@ -351,4 +361,4 @@
   </script>
 
 </body>
-</html>
+        </html>
