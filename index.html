@@ -11,17 +11,18 @@
 
   <style>
     :root {
-      --bg-dark: #050507;
-      --bg-gradient: radial-gradient(circle at top center, #13131a 0%, #050507 100%);
+      /* Cores baseadas em painéis profissionais (estilo Discord/Dyno) */
+      --bg-dark: #09090b; 
       --primary-red: #ef4444;
       --primary-red-hover: #dc2626;
-      --primary-glow: rgba(239, 68, 68, 0.35);
       --text-main: #ffffff;
       --text-muted: #a1a1aa;
-      --online: #43b581;
-      --offline: #f04747;
-      --unknown: #faa61a;
-      --border-soft: rgba(255, 255, 255, 0.08);
+      --border-soft: rgba(255, 255, 255, 0.1);
+      
+      /* Cores de Status padrão Discord */
+      --online: #23a559;
+      --offline: #f23f43;
+      --unknown: #f0b232;
     }
 
     * {
@@ -36,23 +37,22 @@
       outline: none;
     }
 
+    /* Focus acessível e minimalista */
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--primary-red);
-      outline-offset: 3px;
-      border-radius: 12px;
+      outline: 2px solid var(--text-muted);
+      outline-offset: 2px;
     }
 
     html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
     }
 
     body {
-      background-color: var(--bg-dark);
-      background-image: var(--bg-gradient);
-      color: var(--text-main);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,96 +60,56 @@
       position: relative;
     }
 
-    /* --- BACKGROUND ORBS --- */
-    .glow-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(140px);
-      z-index: 0;
-      opacity: 0.2;
-      animation: float 10s infinite ease-in-out alternate;
-    }
-
-    .orb-1 {
-      width: 450px;
-      height: 450px;
-      background: var(--primary-red);
-      top: -200px;
-      left: -150px;
-    }
-
-    .orb-2 {
-      width: 350px;
-      height: 350px;
-      background: #8b0000;
-      bottom: -150px;
-      right: -100px;
-      animation-delay: -5s;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(30px, 40px); }
-    }
-
-    /* --- MAIN CONTENT --- */
+    /* --- CONTEÚDO PRINCIPAL --- */
     .container {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       padding: 20px;
       z-index: 1;
       text-align: center;
-      animation: fadeIn 1s ease-out;
+      animation: fadeUp 0.6s ease-out forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Logo limpa, sem efeitos exagerados */
     .logo {
-      width: 96px;
-      height: 96px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       margin-bottom: 24px;
-      border-radius: 24px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--border-soft);
-      transition: transform 0.3s ease;
+      border-radius: 20px;
     }
 
-    .logo:hover {
-      transform: scale(1.05) rotate(-2deg);
-    }
-
+    /* Título sólido, grande e imponente */
     h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 16px;
-      letter-spacing: -1.5px;
-      /* Gradiente moderno no texto */
-      background: linear-gradient(135deg, #ffffff 0%, #ef4444 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 20px rgba(239, 68, 68, 0.1);
+      letter-spacing: -0.04em;
+      color: var(--text-main);
     }
 
     .subtitle {
       color: var(--text-muted);
       margin-bottom: 40px;
       line-height: 1.6;
-      font-size: 1rem;
-      max-width: 440px;
+      font-size: 1.125rem;
+      max-width: 480px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 400;
     }
 
-    /* --- BUTTONS --- */
+    /* --- BOTÕES (FLAT DESIGN) --- */
     .btn-group {
       display: flex;
       gap: 16px;
       justify-content: center;
-      margin-bottom: 35px;
+      margin-bottom: 32px;
       max-width: 440px;
       margin-left: auto;
       margin-right: auto;
@@ -159,85 +119,67 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       padding: 14px 24px;
-      border-radius: 14px;
+      border-radius: 8px; /* Cantos menos arredondados, mais profissional */
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: background-color 0.2s ease, transform 0.1s ease;
       cursor: pointer;
       border: none;
       flex: 1;
     }
 
     .btn svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
     }
 
+    /* Sem sombras, apenas cor sólida */
     .btn-primary {
       background: var(--primary-red);
-      color: white;
-      box-shadow: 0 4px 15px var(--primary-glow);
+      color: #ffffff;
     }
 
     .btn-primary:hover {
       background: var(--primary-red-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px var(--primary-glow);
     }
 
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* Botão secundário fantasma (Ghost Button) */
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
-      color: white;
+      background: transparent;
+      color: var(--text-main);
       border: 1px solid var(--border-soft);
-      backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    /* --- STATUS --- */
+    .btn-secondary:active {
+      transform: scale(0.98);
+    }
+
+    /* --- STATUS DO BOT --- */
     .status-container {
-      font-weight: 600;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 8px 16px;
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid var(--border-soft);
+      font-size: 0.85rem;
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      position: relative;
-    }
-
-    .status-dot::after {
-      content: "";
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background-color: inherit;
-      opacity: 0.4;
-      animation: pulse-ring 2s infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% { transform: scale(0.8); opacity: 0.5; }
-      70% { transform: scale(2); opacity: 0; }
-      100% { transform: scale(0.8); opacity: 0; }
+      background-color: var(--unknown);
     }
 
     /* --- TOAST --- */
@@ -246,33 +188,31 @@
       bottom: 40px;
       left: 50%;
       transform: translate(-50%, 100px);
-      background: rgba(15, 15, 20, 0.95);
-      backdrop-filter: blur(10px);
+      background: #18181b; /* Fundo sólido e escuro */
       border: 1px solid var(--border-soft);
-      color: white;
+      color: var(--text-main);
       padding: 14px 24px;
-      border-radius: 50px;
+      border-radius: 8px;
       font-size: 0.9rem;
       font-weight: 500;
       display: flex;
       align-items: center;
       gap: 12px;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .toast svg {
       width: 18px;
       height: 18px;
-      stroke: var(--unknown);
+      stroke: var(--primary-red);
     }
 
     .toast.show {
       transform: translate(-50%, 0);
     }
 
-    /* --- FOOTER (Mantido exatamente como solicitado) --- */
+    /* --- FOOTER (Intacto) --- */
     footer {
       position: absolute;
       bottom: 20px;
@@ -300,20 +240,18 @@
       color: var(--primary-red);
     }
     
-    /* Responsividade básica para mobile */
+    /* Responsividade */
     @media (max-width: 480px) {
       .btn-group {
         flex-direction: column;
       }
-      h1 { font-size: 2.5rem; }
+      h1 { font-size: 2.8rem; }
+      .subtitle { font-size: 1rem; padding: 0 10px; }
     }
   </style>
 </head>
 
 <body>
-
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
 
   <div id="toast" class="toast">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -355,9 +293,9 @@
     </div>
 
     <div class="status-container">
-      <span class="status-dot" style="background-color: var(--unknown)"></span>
+      <span class="status-dot"></span>
       <a href="./status" style="text-decoration: none;">
-        <span id="bot-text" style="color: var(--text-muted);">Verificando...</span>
+        <span id="bot-text" style="color: var(--text-muted); transition: color 0.2s;">Verificando...</span>
       </a>
     </div>
 
@@ -383,12 +321,16 @@
         const color = data.online ? 'var(--online)' : 'var(--offline)';
         dot.style.backgroundColor = color;
         text.textContent = data.online ? 'Online' : 'Offline';
-        text.style.color = color;
+        
+        // Efeito sutil no hover do texto de status dependendo de estar online/offline
+        text.onmouseover = () => text.style.color = color;
+        text.onmouseout = () => text.style.color = 'var(--text-muted)';
 
       } catch {
         dot.style.backgroundColor = 'var(--unknown)';
         text.textContent = 'Indisponível';
-        text.style.color = 'var(--unknown)';
+        text.onmouseover = null;
+        text.onmouseout = null;
       }
     }
 
