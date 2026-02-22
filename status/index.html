@@ -3,164 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Punishment Status</title>
-
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>Punishment • Status</title>
 
   <style>
     :root {
-      --bg-dark: #0a0a0c;
-      --bg-gradient: radial-gradient(circle at center, #111116 0%, #0a0a0c 100%);
       --primary-red: #ff3b3b;
-      --primary-red-hover: #ff5c5c;
-      --text-main: #ffffff;
-      --text-muted: #a1a1aa;
-      --online: #43b581;
-      --offline: #f04747;
-      --unknown: #faa61a;
-      --card-bg: rgba(255, 255, 255, 0.02);
-      --card-border: rgba(255, 255, 255, 0.05);
-      --card-hover: rgba(255, 255, 255, 0.04);
+      --background: #0d0d0f;
+      --card: #141419;
+      --card-border: rgba(255,255,255,0.05);
+      --text: #ffffff;
+      --text-muted: #777;
+      --success: #2ecc71;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      background-color: var(--bg-dark);
-      background-image: var(--bg-gradient);
-      color: var(--text-main);
-      min-height: 100vh;
+      background: var(--background);
+      color: var(--text);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 60px 20px 20px 20px;
+      min-height: 100vh;
+      padding-bottom: 120px;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .logo-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
-
-    .logo {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      border-radius: 18px;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .logo-container:hover .logo {
-      transform: scale(1.1) rotate(5deg);
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin: auto;
+      width: 100%;
     }
 
     h1 {
+      text-align: center;
       font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 8px;
       color: var(--primary-red);
+      margin-bottom: 30px;
     }
 
-    .status-indicator {
+    .status-pill {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 10px 24px;
-      border-radius: 100px;
-      background: var(--card-bg);
+      padding: 12px 20px;
+      border-radius: 50px;
       border: 1px solid var(--card-border);
-      margin-bottom: 50px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
+      width: fit-content;
+      margin: 0 auto 40px;
+      color: var(--success);
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--success);
       border-radius: 50%;
-      position: relative;
-    }
-
-    .status-dot::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: 50%;
-      background-color: inherit;
-      opacity: 0.4;
-      animation: pulse-ring 2s infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% { transform: scale(1); opacity: 0.5; }
-      70% { transform: scale(1.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 0; }
-    }
-
-    .status-operational { color: var(--online); border-color: rgba(67, 181, 129, 0.2); }
-    .status-offline     { color: var(--offline); border-color: rgba(240, 71, 71, 0.2); }
-    .status-unknown     { color: var(--unknown); border-color: rgba(250, 166, 26, 0.2); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 900px;
     }
 
     .card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--card-border);
-      padding: 24px;
-      border-radius: 16px;
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 59, 59, 0.3);
-      background: var(--card-hover);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .card h2 {
+      font-size: 0.9rem;
       color: var(--text-muted);
-    }
-
-    .card-header i {
-      width: 18px;
-      height: 18px;
-    }
-
-    .card-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
+      margin-bottom: 10px;
       letter-spacing: 1px;
     }
 
-    .card-value {
+    .card p {
       font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-weight: bold;
+    }
+
+    .success-text {
+      color: var(--success);
     }
 
     .footer {
@@ -171,6 +99,8 @@
       color: #555;
       border-top: 1px solid var(--card-border);
       margin-top: auto;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-links {
@@ -191,129 +121,63 @@
       color: var(--primary-red);
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .grid { grid-template-columns: 1fr; }
+    .floating-button {
+      position: fixed;
+      right: 20px;
+      bottom: 80px;
+      background: var(--primary-red);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      z-index: 1;
     }
+
   </style>
 </head>
+
 <body>
 
-  <header class="header">
-    <div class="logo-container">
-      <img src="../logo.png" alt="Punishment Logo"
-        class="logo"
-        onerror="this.src='https://ui-avatars.com/api/?name=P&background=ff3b3b&color=fff'" />
-    </div>
-    <h1>Punishment</h1>
-  </header>
+<main>
+  <h1>Punishment</h1>
 
-  <div id="statusIndicator" class="status-indicator status-unknown">
-    <div class="status-dot" id="statusDot" style="background-color: var(--unknown)"></div>
-    <span id="statusText">Verificando...</span>
+  <div class="status-pill">
+    <div class="dot"></div>
+    Sistemas Operacionais
   </div>
 
-  <main class="grid">
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Servidores</span>
-        <i data-lucide="server"></i>
-      </div>
-      <div class="card-value" id="guilds">--</div>
-    </div>
+  <div class="card">
+    <h2>SERVIDORES</h2>
+    <p>32</p>
+  </div>
 
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Usuários</span>
-        <i data-lucide="users"></i>
-      </div>
-      <div class="card-value" id="users">--</div>
-    </div>
+  <div class="card">
+    <h2>USUÁRIOS</h2>
+    <p>1.247</p>
+  </div>
 
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">API Status</span>
-        <i data-lucide="activity"></i>
-      </div>
-      <div class="card-value" id="apiStatus">--</div>
-    </div>
+  <div class="card">
+    <h2>API STATUS</h2>
+    <p class="success-text">Online</p>
+  </div>
 
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">Atualização</span>
-        <i data-lucide="clock"></i>
-      </div>
-      <div class="card-value" id="updated" style="font-size: 1.1rem; color: var(--text-muted); margin-top: auto;">--</div>
-    </div>
-  </main>
+  <div class="card">
+    <h2>ATUALIZAÇÃO</h2>
+    <p>Hoje às 10:21</p>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="../terms">Termos</a>
-      <a href="../privacy">Privacidade</a>
-    </div>
-    <p>© 2026 Punishment. Todos os direitos reservados.</p>
-  </footer>
+</main>
 
-  <script>
-    lucide.createIcons();
+<footer class="footer">
+  <div class="footer-links">
+    <a href="../terms">Termos</a>
+    <a href="../privacy">Privacidade</a>
+  </div>
+  <p>© 2026 Punishment. Todos os direitos reservados</p>
+</footer>
 
-    async function fetchStatus() {
-      const indicator = document.getElementById('statusIndicator');
-      const statusText = document.getElementById('statusText');
-      const dot = document.getElementById('statusDot');
-      const apiStatusEl = document.getElementById('apiStatus');
-
-      try {
-        const [statusRes, guildsRes, usersRes] = await Promise.all([
-          fetch('https://punbot.xyz/api/bot/status'),
-          fetch('https://punbot.xyz/api/bot/guilds').catch(() => ({ json: () => [] })),
-          fetch('https://punbot.xyz/api/bot/users').catch(() => ({ json: () => ({ total: 0 }) }))
-        ]);
-
-        const statusData = await statusRes.json();
-        const guildsData = await guildsRes.json();
-        const usersData = await usersRes.json();
-
-        const isOnline = statusData.online === true || statusData.status === "online";
-
-        if (isOnline) {
-          indicator.className = "status-indicator status-operational";
-          statusText.textContent = "Sistemas Operacionais";
-          dot.style.backgroundColor = "var(--online)";
-          apiStatusEl.textContent = "Online";
-          apiStatusEl.style.color = "var(--online)";
-        } else {
-          indicator.className = "status-indicator status-offline";
-          statusText.textContent = "Instabilidade Detectada";
-          dot.style.backgroundColor = "var(--offline)";
-          apiStatusEl.textContent = "Offline";
-          apiStatusEl.style.color = "var(--offline)";
-        }
-
-        const totalGuilds = Array.isArray(guildsData) ? guildsData.length : (guildsData.count || 0);
-        document.getElementById('guilds').textContent = totalGuilds.toLocaleString('pt-BR');
-
-        const totalUsers = usersData.total || usersData.users || 0;
-        document.getElementById('users').textContent = totalUsers.toLocaleString('pt-BR');
-
-        const now = new Date();
-        const horas = now.getHours().toString().padStart(2, '0');
-        const minutos = now.getMinutes().toString().padStart(2, '0');
-        document.getElementById('updated').textContent = `Hoje às ${horas}:${minutos}`;
-
-      } catch {
-        statusText.textContent = "Erro na conexão com a API";
-        indicator.className = "status-indicator status-offline";
-        dot.style.backgroundColor = "var(--offline)";
-        apiStatusEl.textContent = "Indisponível";
-        apiStatusEl.style.color = "var(--offline)";
-      }
-    }
-
-    fetchStatus();
-    setInterval(fetchStatus, 30000);
-  </script>
+<a href="#" class="floating-button">Dashboard</a>
 
 </body>
 </html>
